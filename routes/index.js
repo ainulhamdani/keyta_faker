@@ -129,15 +129,10 @@ async function createTransactions(response) {
 }
 
 async function createTransactionsProcess(){
-  let i = 1
+  let i = 0
   let price = globalConfig.base_price
   console.log("Process started")
   while(start) {
-    let sec = Math.ceil(Math.random() * 1000)
-    lastDelay = sec
-    lastTimeProcess = new Date().getTime()
-    console.log("delay "+sec)
-    await sleep(sec*1000)
     getFakerData(1).then((response) => {
       let person = response[0]
       lastData = person
@@ -163,6 +158,11 @@ async function createTransactionsProcess(){
     })
     console.log(i)
     i++
+    let sec = Math.ceil(Math.random() * 1000)
+    lastDelay = sec
+    lastTimeProcess = new Date().getTime()
+    console.log("delay "+sec)
+    await sleep(sec*1000)
   }
   console.log("Process stopped")
 }
