@@ -10,7 +10,7 @@ let db = low(adapter)
 db.defaults({ configs: {
   "token" : "",
   "base_url" : "https://live.keyta.id/api/",
-  "faker_url" : "http://localhost/faker/",
+  "faker_url" : "https://faker.ainulhamdani.com/",
   "base_price" : 250000,
   "price_random" : 100
 } }).write()
@@ -136,7 +136,7 @@ async function createTransactionsProcess(){
     getFakerData(1).then((response) => {
       let person = response[0]
       lastData = person
-      let random = Math.ceil(Math.random() * globalConfig.price_random * 1000)
+      let random = Math.ceil(Math.random() * globalConfig.price_random) * 1000
       let data = {}
       let x = i;
       data.height = 20
