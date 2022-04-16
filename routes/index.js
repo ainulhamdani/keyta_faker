@@ -77,6 +77,10 @@ router.post('/config', function(req, res, next) {
   let config = db.get('configs').value();
   config.token = data.token
   config.base_url = data.base_url
+  config.faker_url = data.faker_url
+  config.base_price = data.base_price
+  config.price_random = data.price_random
+  config.delay = data.delay
   globalConfig = config
   
   axios.defaults.baseURL = globalConfig.base_url
