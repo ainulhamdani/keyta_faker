@@ -12,7 +12,8 @@ db.defaults({ configs: {
   "base_url" : "https://live.keyta.id/api/",
   "faker_url" : "https://faker.ainulhamdani.com/",
   "base_price" : 250000,
-  "price_random" : 100
+  "price_random" : 100,
+  "delay" : 0
 } }).write()
 let globalConfig = db.get('configs').value();
 
@@ -159,6 +160,7 @@ async function createTransactionsProcess(){
     console.log(i)
     i++
     let sec = Math.ceil(Math.random() * 1000)
+    if (globalConfig.delay != 0) sec = globalConfig.delay
     lastDelay = sec
     lastTimeProcess = new Date().getTime()
     console.log("delay "+sec)
